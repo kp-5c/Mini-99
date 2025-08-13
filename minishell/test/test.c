@@ -30,7 +30,8 @@ static void setup_signals(void)
     signal(SIGQUIT, SIG_IGN);           // comme bash
 }
 
-int main(void) {
+int main(void) 
+{
     char *pwd_before = NULL;
     char *pwd_after  = NULL;
 

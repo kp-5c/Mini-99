@@ -6,7 +6,7 @@
 #    By: dbhujoo <dbhujoo@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/05 15:35:48 by dbhujoo           #+#    #+#              #
-#    Updated: 2025/08/13 08:52:41 by dbhujoo          ###   ########.fr        #
+#    Updated: 2025/08/13 12:28:20 by dbhujoo          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,13 +17,11 @@ CFLAGS		= -Wall -Werror -Wextra -g -Iincludes -lreadline
 AR		= ar
 ARFLAGS		= rcs
 OBJ_DIR		= obj
-SRCS_SRC	= srcs/pipex.c \
-		  srcs/pipex_open.c \
-		  srcs/pipex_check_arg.c \
-		  srcs/pipex_get_env.c \
-		  srcs/pipex_get_path.c \
-		  srcs/pipex_exec.c \
-		  srcs/pipex_pipe.c
+SRCS_SRC	= utils/singleton.c utils/free.c utils/signals.c\
+			
+			
+			
+			main.c 
 
 BONUS_SRC	= 
 
@@ -46,7 +44,7 @@ all: message $(NAME)
 bonus : $(BONUS_NAME)
 	
 message:
-	@printf "$(GREEN)compilation Minishell...$(NC)\n"
+	@printf "$(GREEN)compilation Minishell...$(RESET)\n"
 
 $(NAME): $(OBJ)
 	@$(MAKE) --no-print-directory -C $(LIBFT_PATH)
@@ -56,24 +54,24 @@ $(NAME): $(OBJ)
 $(BONUS_NAME): $(BONUS_OBJS)
 	@$(MAKE) --no-print-directory -C $(LIBFT_PATH)
 	@$(CC) $(CFLAGS) $(BONUS_OBJS) $(LIBFT) -o $(BONUS_NAME)
-	@printf "$(GREEN)Minishell_bonus complete$(NC)\n"
+	@printf "$(GREEN)Minishell_bonus complete$(RESET)\n"
 	
 $(OBJ_DIR)/%.o: %.c
-	@printf "Compilation $<\n"
+	@printf "$(YELLOW)Compilation $<$(RESET)\n"
 	@mkdir -p $(dir $@)
 	@$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
-	@printf "Cleaning objects\n"
+	@printf "$(BLUE)Cleaning objects$(RESET)\n"
 	@rm -f $(OBJ) $(BONUS_OBJS)
 	@$(MAKE) --no-print-directory -C $(LIBFT_PATH) clean
 
 fclean: clean
-	@printf "Cleaning all\n"
+	@printf "$(BLUE)Cleaning all$(RESET)\n"
 	@rm -f $(NAME) $(BONUS_NAME)
 	@$(MAKE) --no-print-directory -C $(LIBFT_PATH) fclean
 
 re: fclean all
-	@printf "$(GREEN)Recompil de Minishell...$(NC)\n"
+	@printf "$(GREEN)Recompil de Minishell...$(RESET)\n"
 
 .PHONY: all clean fclean re
