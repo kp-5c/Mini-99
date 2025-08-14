@@ -6,7 +6,7 @@
 /*   By: dbhujoo <dbhujoo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/28 10:01:57 by dbhujoo           #+#    #+#             */
-/*   Updated: 2025/08/13 17:16:53 by dbhujoo          ###   ########.fr       */
+/*   Updated: 2025/08/14 14:28:12 by dbhujoo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ extern int	g_signal_status;
 
 typedef struct s_data
 {
+	char	*input;
 	char	*prompt;
 	int		exit_status;
 }	t_data;

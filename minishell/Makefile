@@ -6,30 +6,31 @@
 #    By: dbhujoo <dbhujoo@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/05 15:35:48 by dbhujoo           #+#    #+#              #
-#    Updated: 2025/08/13 12:28:20 by dbhujoo          ###   ########.fr        #
+#    Updated: 2025/08/14 14:40:29 by dbhujoo          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME		= minishell
-BONUS_NAME	= pipex_bonus
+BONUS_NAME	= minishell_bonus
 CC		= cc
-CFLAGS		= -Wall -Werror -Wextra -g -Iincludes -lreadline
+CFLAGS		= -Wall -Werror -Wextra -g -Iincludes
 AR		= ar
 ARFLAGS		= rcs
 OBJ_DIR		= obj
-SRCS_SRC	= utils/singleton.c utils/free.c utils/signals.c\
-			
-			
-			
-			main.c 
+FILES	= utils/singleton.c \
+				utils/free.c \
+				main/main.c
+				
+HEADER		= includes/minishell.h
 
 BONUS_SRC	= 
 
-SRC		= $(SRCS_SRC)
+SRC_DIR		= srcs
+SRCS		= $(addprefix $(SRC_DIR)/, $(FILES))
 
-OBJ		= $(SRC:%.c=$(OBJ_DIR)/%.o)
+OBJ = $(patsubst $(SRC_DIR)/%.c,$(OBJ_DIR)/%.o,$(SRCS))
 
-BONUS_OBJS	= $(BONUS_SRC:%.c=$(OBJ_DIR)/%.o)
+BONUS_OBJS	= $(BONUS_SRCS:%.c=$(OBJ_DIR)/%.o)
 
 LIBFT_PATH	= ./libft
 LIBFT		= $(LIBFT_PATH)/libft.a
@@ -48,17 +49,17 @@ message:
 
 $(NAME): $(OBJ)
 	@$(MAKE) --no-print-directory -C $(LIBFT_PATH)
-	@$(CC) $(CFLAGS) $(OBJ) $(LIBFT) -o $(NAME)
-	@printf "$(GREEN)Minishell complete$(NC)\n"
+	@$(CC) $(CFLAGS) $(OBJ) $(LIBFT) -o $(NAME) -lreadline
+	@printf "$(GREEN)Minishell complete$(RESET)\n"
 
 $(BONUS_NAME): $(BONUS_OBJS)
 	@$(MAKE) --no-print-directory -C $(LIBFT_PATH)
 	@$(CC) $(CFLAGS) $(BONUS_OBJS) $(LIBFT) -o $(BONUS_NAME)
 	@printf "$(GREEN)Minishell_bonus complete$(RESET)\n"
 	
-$(OBJ_DIR)/%.o: %.c
-	@printf "$(YELLOW)Compilation $<$(RESET)\n"
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c $(HEADER)
 	@mkdir -p $(dir $@)
+	@printf "$(YELLOW)Compiling $(notdir $<)$(RESET)\n"
 	@$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
