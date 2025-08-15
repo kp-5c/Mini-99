@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dbhujoo <dbhujoo@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ebenoist <ebenoist@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/28 10:01:57 by dbhujoo           #+#    #+#             */
-/*   Updated: 2025/08/14 14:28:12 by dbhujoo          ###   ########.fr       */
+/*   Updated: 2025/08/15 11:51:26 by ebenoist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,5 +42,6 @@ typedef struct s_data
 //UTILS
 t_data	*_data(void);
 void    last_free(void);
+char	*parsing(char *input);
 
 #endif
