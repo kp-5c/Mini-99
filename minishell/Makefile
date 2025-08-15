@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: dbhujoo <dbhujoo@student.42.fr>            +#+  +:+       +#+         #
+#    By: ebenoist <ebenoist@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/05 15:35:48 by dbhujoo           #+#    #+#              #
-#    Updated: 2025/08/14 14:40:29 by dbhujoo          ###   ########.fr        #
+#    Updated: 2025/08/15 11:53:23 by ebenoist         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,8 @@ ARFLAGS		= rcs
 OBJ_DIR		= obj
 FILES	= utils/singleton.c \
 				utils/free.c \
-				main/main.c
+				main/main.c \
+				parsing/parsing.c
 				
 HEADER		= includes/minishell.h
 
