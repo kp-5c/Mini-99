@@ -1,27 +1,2 @@
-xsxxxs
-okokkkk
-flflflf
-''
-'
-coucou
-ca va 
-coucou
-""
-"
-coucou <>
-coucou <
-coucou <> t
-coucou <>      
-coucou <>  g    
-coucou |
-coucou |
-coucou |
-coucou ()
-cocuo
-ca
-ca '
-ca ''
-ca (ok)
-ca ()
-ca (ok) | p
-ca (ok) |
+c
+ok
