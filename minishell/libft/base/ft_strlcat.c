@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dbhujoo <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: dbhujoo <dbhujoo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/29 10:47:11 by dbhujoo           #+#    #+#             */
-/*   Updated: 2025/05/06 11:06:22 by dbhujoo          ###   ########.fr       */
+/*   Updated: 2025/08/18 14:49:09 by dbhujoo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,17 @@ size_t	ft_strlcat(char *dst, const char *src, size_t size)
 	}
 	dst[ldst + i] = '\0';
 	return (ft_strlen(src) + ldst);
+}
+
+char	*ft_strcat(char *dest, const char *src)
+{
+	char	*ptr;
+
+	ptr = dest + ft_strlen(dest);
+	while (*src)
+		*ptr++ = *src++;
+	*ptr = '\0';
+	return (dest);
 }
 /*
 int	main(void)

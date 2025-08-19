@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dbhujoo <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: dbhujoo <dbhujoo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/29 10:36:39 by dbhujoo           #+#    #+#             */
-/*   Updated: 2025/05/06 11:20:40 by dbhujoo          ###   ########.fr       */
+/*   Updated: 2025/08/18 14:47:52 by dbhujoo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,19 @@ size_t	ft_strlcpy(char *dest, const char *src, size_t size)
 	}
 	dest[i] = '\0';
 	return (ft_strlen(src));
+}
+
+char	*ft_strcpy(char *dest, const char *src)
+{
+	char	*ptr;
+
+	ptr = dest;
+	while (*src)
+	{
+		*ptr++ = *src++;
+	}
+	*ptr = '\0';
+	return (dest);
 }
 /*
 int	main(void)
