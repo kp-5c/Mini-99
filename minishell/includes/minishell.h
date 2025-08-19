@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ebenoist <ebenoist@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dbhujoo <dbhujoo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/28 10:01:57 by dbhujoo           #+#    #+#             */
-/*   Updated: 2025/08/15 11:51:26 by ebenoist         ###   ########.fr       */
+/*   Updated: 2025/08/19 14:01:58 by dbhujoo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,16 +32,32 @@ extern int	g_signal_status;
 # include <unistd.h>
 # include <errno.h>
 
+typedef struct s_env
+{
+	char			*key;
+	char			*value;
+	struct s_env	*next;
+}	t_env;
+
 typedef struct s_data
 {
 	char	*input;
 	char	*prompt;
-	int		exit_status;
+	char	**env_tab;
+	int		exit_code;
+	t_env	*env_list;
 }	t_data;
 
+//ENV
+t_env   *env_to_list(char **envp);
+t_env	*env_to_node(char *env);
+char    **env_to_array(t_env *env_list);
 //UTILS
+void    error_malloc(void);
 t_data	*_data(void);
 void    last_free(void);
-char	*parsing(char *input);
-
+void	signal_handler(int sig);
+//BUILDINS
+int	pwd_builtin(void);
+int env_builtin(void);
 #endif
