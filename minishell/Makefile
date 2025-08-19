@@ -6,7 +6,7 @@
 #    By: ebenoist <ebenoist@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/05 15:35:48 by dbhujoo           #+#    #+#              #
-#    Updated: 2025/08/18 13:28:06 by ebenoist         ###   ########.fr        #
+#    Updated: 2025/08/18 16:30:17 by ebenoist         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,8 @@ OBJ_DIR		= obj
 FILES	= utils/singleton.c \
 				utils/free.c \
 				main/main.c \
-				parsing_tokenisation/parsing.c
+				parsing_tokenisation/parsing.c\
+				parsing_tokenisation/token.c
 				
 HEADER		= includes/minishell.h
 

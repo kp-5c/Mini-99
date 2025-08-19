@@ -22,8 +22,8 @@ int	main(int ac, char **av, char **envp)
 		{
 			add_history(data->input);
 			if (!parsing(data->input))
-				write(2, "bad command line\n", 18);
-			//tokenisation(data->input);
+				write(2, "unexpected EOF while looking for matching quote”\n", 52);
+			tokenisation();
 		}
 		free(data->input);
 	}

@@ -11,13 +11,15 @@ static int	ft_parsing_quote(char *input, int i)
 		if (input[i] == '\'' || input[i] == '"')
 			count++;
 		if (input[i] == '(' && (input[i + 1] == ')' || input[i + 1] == '|'
-				|| input[i + 1] == '&' || input[i + 1] == ';'))
+				|| input[i + 1] == '&' || input[i + 1] == ';' || input[i
+				+ 1] == '\0'))
 			return (0);
 		if (input[i] == ')' && (input[i - 1] == '|' || input[i - 1] == '&'
 				|| input[i - 1] == ';'))
-				return(0);
-		if (input[i] == '<' && input[i + 1] == '>')
-				return (0);
+			return (0);
+		if ((input[i] == '<' && input[i + 1] == '>') || (input[i] == '>'
+				&& input[i - 1] == '|'))
+			return (0);
 		if ((input[i] == '>' && input[i + 1] == '<') || ((input[i] == '<'
 					|| input[i] == '>') && input[i + 1] == '|'))
 			return (0);
@@ -25,13 +27,15 @@ static int	ft_parsing_quote(char *input, int i)
 	}
 	if ((count == 0) || (count > 0 && (count & 1) == 0))
 		return (1);
-	else
-		return (0);
+	return (0);
 }
-
+int ft_isspace(int c)
+{
+	return (c == ' ' || (c >= '\t' && c <= '\r'));
+}
 static int	ft_parsing_eof(char *input, int i)
 {
-	if (input[i] == '|')
+	if (input[i] == '|' || input[i] == '&')
 		return (0);
 	while (input[i])
 		i++;
@@ -59,7 +63,7 @@ static char	*ft_skip_space(char *str)
 		return (NULL);
 	while (str[i])
 	{
-		while (str[i] == ' ' || str[i] == '\t')
+		while (isspace((unsigned char)str[i]))
 			i++;
 		if (!str[i])
 			break ;
@@ -68,17 +72,12 @@ static char	*ft_skip_space(char *str)
 	input[j] = '\0';
 	return (input);
 }
-/*tokenisation(char *str)
-{
-	int	a;
-	int	b;
 
-}*/
 static char	*ft_parsing_close(char *str, int i)
 {
-	int a;
+	int	a;
 	int b;
-	
+
 	a = 0;
 	b = 0;
 	while (str[i])
